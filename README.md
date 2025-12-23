@@ -103,10 +103,46 @@ The Lord's Prayer & Communion captions include both captions in OBS and Powerpoi
 
 **IMPORTANT NOTE:** The communion caption automatically includes the Lord's Prayer in the proper place. Don't include the Lord's Prayer if you have a communion caption added.
 
+## How to export
 
+### Exporting to PowerPoint
 
+Exporting to PowerPoint is very simple! Simply click the export button and then open the downloaded PowerPoint file.
 
+<img width="475" height="224" alt="image" src="https://github.com/user-attachments/assets/0950a563-c2ef-4d2e-879a-48718c5a536f" />
 
+### Exporting to OBS
+
+**IF THIS IS YOUR FIRST TIME EXPORTING CAPTIONS INTO OBS, MAKE SURE TO FOLLOW THE [OBS ONE-TIME SETUP GUIDE!!!](#obs-one-time-setup)**
+
+If you already have used the generator on your device, continue onto the next steps:
+
+1) Export the captions to OBS on the bottom of the page. This will download a JSON file to your computer.
+
+<img width="475" height="224" alt="image" src="https://github.com/user-attachments/assets/0950a563-c2ef-4d2e-879a-48718c5a536f" />
+
+2) Open OBS
+
+3) Go to Tools > Scripts
+<img width="285" height="250" alt="image" src="https://github.com/user-attachments/assets/d82fe187-6043-40db-80fb-80c32dbe562e" />
+
+4) Click on the "caption-importer.lua" script and click "Browse" to select the JSON file downloaded by the generator.
+<img height="400" alt="image" src="https://github.com/user-attachments/assets/fbf09765-c804-4e4e-864b-44e534d6444c" />
+
+5) Click "Import Captions", then "Close"
+
+6) A new scene will be generated in OBS called "Imported Captions"
+<img width="252" height="225" alt="image" src="https://github.com/user-attachments/assets/c08ed77d-7ef1-42ef-bea5-144a42262af6" />
+
+7) Add a new "Video Capture Device" to the scene
+<img width="300" height="227" alt="image" src="https://github.com/user-attachments/assets/3528e29a-02d9-4558-bd94-a5b545a990f6" />
+
+When importing, it will create a brand new scene with all the captions. Therefore, you will need to re-add the camera to the new scene.
+
+8) Change the device to something along the line of "USB Camera" or "PTZ Camera", whatever makes the sanctuary appear!
+<img width="677" height="227" alt="image" src="https://github.com/user-attachments/assets/9c772699-4c30-4268-ac43-59ffb3a672a0" />
+
+Your captions should now appear in OBS!
 
 # Additional Notes
 
