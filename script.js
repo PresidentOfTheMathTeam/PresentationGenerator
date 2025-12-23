@@ -236,7 +236,7 @@ function loadDefault() {
         { "type": "centered", "text": ["Offering Prayer"] },
         { "type": "bodytext", "text": ["Offering Prayer Text"] },
         { "type": "music", "text": ["Offertory"] },
-        { "type": "hymn", "text": ["Doxology", "95 - UMH", "Praise God, From Whom All Blessings Flow"], "lyrics": doxologyLyrics },
+        { "type": "hymn", "text": ["Doxology", "95 - UMH", "Praise God, From Whom All Blessings Flow"], "bodyText": doxologyLyrics },
         { "type": "communion" },
         { "type": "music", "text": ["Special Music"] },
         { "type": "centered", "text": ["Announcments"] },
@@ -246,7 +246,7 @@ function loadDefault() {
     ];
 
     defaultCaptions.forEach(caption => {
-        createCaption(caption.type, caption.text);
+        createCaption(caption.type, caption.text, caption.bodyText);
     })
 }
 
