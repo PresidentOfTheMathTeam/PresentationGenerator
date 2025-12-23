@@ -1,0 +1,120 @@
+table,
+th,
+#captionContainer {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+span {
+    margin: 1em 10px;
+    display: block;
+}
+
+#captions {
+    margin-bottom: 1em;
+    padding: 10px;
+}
+
+.caption span {
+    margin: 0px;
+    display: none;
+}
+
+.caption[type="centered"] .centeredCaptionOptions {
+    display: inline;
+}
+
+.caption[type="bibleverse"] .bibleverseCaptionOptions {
+    display: inline;
+}
+
+.caption[type="hymn"] .hymnCaptionOptions {
+    display: inline;
+}
+
+.caption[type="music"] .musicCaptionOptions {
+    display: inline;
+}
+
+.caption[type="lordsprayer"] .lordsprayerCaptionOptions {
+    display: inline;
+}
+
+.caption[type="titlecard"] .titlecardCaptionOptions {
+    display: inline;
+}
+
+.caption[type="bodytext"] .bodytextCaptionOptions {
+    display: inline;
+}
+
+.caption[type="communion"] .communionCaptionOptions {
+    display: inline;
+}
+
+.caption[type="doxology"] .doxologyCaptionOptions {
+    display: inline;
+}
+
+button {
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.captionTemplate {
+    display: none;
+}
+
+.lyrics-popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    display: none;
+}
+
+.lyrics-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 470px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+}
+
+.lyrics-popup span {
+    display: inline;
+}
+
+.lyrics-popup textarea {
+    height: 250px;
+    min-height: 36px;
+    max-height: 80vh;
+    max-width: 100%;
+    min-width: 100%;
+}

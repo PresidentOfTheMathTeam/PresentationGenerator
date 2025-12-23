@@ -3,66 +3,7 @@
 <head>
     <title>Bulletin Caption Generator</title>
 
-    <style>
-        table,
-        th,
-        td,
-        #captionContainer {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-        }
-
-        span {
-            margin: 1em 10px;
-            display: block;
-        }
-
-        #captions {
-            margin-bottom: 1em;
-            padding: 10px;
-        }
-
-        .caption span {
-            margin: 0px;
-            display: none;
-        }
-
-        .caption[type="general"] .generalCaptionOptions {display: inline;}
-        .caption[type="centered"] .centeredCaptionOptions {display: inline;}
-        .caption[type="hymn"] .hymnCaptionOptions {display: inline;}
-        .caption[type="tfws"] .tfwsCaptionOptions {display: inline;}
-        .caption[type="music"] .musicCaptionOptions {display: inline;}
-
-        button {
-            cursor: pointer;
-        }
-
-        .disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type=number] {
-            -moz-appearance: textfield;
-            text-align: center;
-            width: 70px;
-        }
-
-        .captionTemplate {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -79,18 +20,21 @@
             </tr>
         </thead>
         <tbody id="captionContainer">
-            
+
         </tbody>
     </table>
 
     <span>
         Add a new...
         <select id="newCaptionType">
-            <option value="general">General Caption</option>
-            <option value="centered">Centered Text</option>
+            <option value="centered">Large Text</option>
+            <option value="bodytext">Full Body Text</option>
+            <option value="bibleverse">Bible Verse</option>
             <option value="hymn">Hymn</option>
-            <option value="tfws">The Faith we Sing</option>
             <option value="music">Other Music</option>
+            <option value="titlecard">Title</option>
+            <option value="lordsprayer">Lord's Prayer</option>
+            <option value="communion">Holy Communion</option>
         </select>
         <button id="addRowBtn" onclick="createCaption()">Add Item</button>
     </span>
@@ -99,62 +43,148 @@
         <button id="loadDefaultBtn" onclick="loadDefault()">Load Default Service</button>
     </span>
     <span>
-        Export captions to... 
+        Export captions to...
         <button id="obsBtn" onclick="obsExport()">OBS</button>
         <button id="obsBtn" onclick="powerpointExport()">PowerPoint</button>
     </span>
 </body>
 
 <table>
-<tr class="captionTemplate" type="general">
-    <td>
-        <span class="generalCaptionOptions">
-            <input type="text" placeholder="Left-Aligned Text" />
-            <input type="text" placeholder="Right-Aligned Text" />
-        </span>
-        <span class="centeredCaptionOptions">
-            <input type="text" placeholder="Center-Aligned Text" />
-            <input type="text" placeholder="Italic Subtext" />
-        </span>
-        <span class="hymnCaptionOptions">
-            <input type="text" placeholder="Left-Aligned Text (DON'T INCLUE HYMN DETAILS)" />
-            <input type="number" placeholder="Hymn #" />
-            <input type="text" placeholder="Hymn Name" />
-            <button onclick="window.open('https://hymnary.org/hymn/UMH/' + this.parentElement.querySelector('input[type=\'number\']').value)">Get Lyrics</button>
-        </span>
-        <span class="tfwsCaptionOptions">
-            <input type="text" placeholder="Left-Aligned Text (DON'T INCLUE HYMN DETAILS)" />
-            <input type="number" placeholder="Hymn #" />
-            <input type="text" placeholder="Hymn Name" />
-            <button onclick="window.open('https://hymnary.org/hymn/FWS/' + this.parentElement.querySelector('input[type=\'number\']').value)">Get Lyrics</button>
-        </span>
-        <span class="musicCaptionOptions">
-            <input type="text" placeholder="Left-Aligned Text" />
-            <input type="text" placeholder="Song Name (Centered)" />
-            <input type="text" placeholder="Preformed By (Center Subtext)" />
-            <input type="text" placeholder="Artist Name (Right-Aligned)" />
-        </span>
-    </td>
-    <td>
-        <select>
-            <option value="general">General Caption</option>
-            <option value="centered">Centered Text</option>
-            <option value="hymn">Hymn</option>
-            <option value="tfws">The Faith we Sing</option>
-            <option value="music">Other Music</option>
-        </select>
-    </td>
-    <td>
-        <button onclick="moveRow(this, 'up')" class="upButton">Up</button>
-        <button onclick="moveRow(this, 'down')" class="downButton">Down</button>
-    </td>
-    <td>
-        <button onclick="removeRow(this)">&#10006;</button>
-    </td>
-</tr>
+    <tr class="captionTemplate" type="general">
+        <td>
+            <span class="titlecardCaptionOptions">
+                Title Slide - Date of service:
+                <input type="date" />
+                <input type="text" placeholder="Details (ex. 3rd Sunday in Lent)" />
+            </span>
+            <span class="centeredCaptionOptions">
+                <input type="text" placeholder="Center-Aligned Text" />
+                <input type="text" placeholder="Second Line" /> (line 2 hidden on OBS)
+            </span>
+            <span class="bodytextCaptionOptions">
+                <input type="text" placeholder="Label/Personal Note (not saved)" />
+                Full Body Text (skipped in OBS)
+                <button
+                    onclick="this.parentElement.querySelector('.lyrics-popup-container').style.display = 'block';">Edit
+                    Text</button>
+                <div class="lyrics-popup-container">
+                    <div class="lyrics-popup">
+                        Seperate every slide by the text " [NEWSLIDE] " (case sensitive)<br>
+                        Do not add any blank lines<br>
+                        To indicate a reply (bold and underlined), surround the text **like this**
+                        <textarea></textarea><br>
+                        <button onclick="this.parentElement.parentElement.style.display = 'none';">Close & Save
+                            Changes</button>
+                    </div>
+                </div>
+            </span>
+            <span class="hymnCaptionOptions">
+                <input type="text" placeholder="Left-Aligned Text (DON'T INCLUE HYMN DETAILS)" />
+                <input type="text" placeholder="Hymn # (and include book)" style="width: 70px;" />
+                <input type="text" placeholder="Hymn Name" />
+                <button
+                    onclick="this.parentElement.querySelector('.lyrics-popup-container').style.display = 'block';">Edit
+                    Lyrics</button> - If no lyrics leave blank
+                <div class="lyrics-popup-container">
+                    <div class="lyrics-popup">
+                        <span>
+                            Load Lyrics For: #
+                            <input type="text" style="width: 70px;" />
+                            in book
+                            <select class="book-select">
+                                <option value="hymnal">Hymnal</option>
+                                <option value="tfws">TFWS</option>
+                            </select>
+                            <button onclick="loadLyrics(this)">Load Lyrics</button>
+                        </span><br>
+                        Seperate every slide by the text " [NEWSLIDE] " (case sensitive)<br>Do not enter any extra lines
+                        (one lyric per line)
+                        <textarea></textarea><br>
+                        <button onclick="this.parentElement.parentElement.style.display = 'none';">Close & Save
+                            Changes</button>
+                    </div>
+                </div>
+            </span>
+            <span class="bibleverseCaptionOptions">
+                <input type="text" placeholder="Left-Aligned Text" />
+                <input type="text" placeholder="Bible Verse" />
+                <button
+                    onclick="this.parentElement.querySelector('.lyrics-popup-container').style.display = 'block';">Edit
+                    Verse</button>
+                <div class="lyrics-popup-container">
+                    <div class="lyrics-popup">
+                        <span>
+                            Enter Verse: (ex. "numbers 6:24-26" or "philippians 4:6-7")
+                            <input type="text" placeholder="ephesians 3:16-17" />
+                            <button onclick="loadVerse(this)">Load Verses</button>
+                        </span><br>
+                        Seperate every slide by the text " [NEWSLIDE] " (case sensitive)<br>Do not enter any extra lines
+                        (no empty lines)
+                        <textarea></textarea><br>
+                        <button onclick="this.parentElement.parentElement.style.display = 'none';">Close & Save
+                            Changes</button>
+                    </div>
+                </div>
+            </span>
+            <span class="musicCaptionOptions">
+                <input type="text" placeholder="Left-Aligned Text" />
+                <input type="text" placeholder="Song Name (Centered)" />
+                <input type="text" placeholder="Preformed By (Center Subtext)" />
+                <input type="text" placeholder="Artist Name (Right-Aligned)" />
+                <button
+                    onclick="this.parentElement.querySelector('.lyrics-popup-container').style.display = 'block';">Edit
+                    Lyrics</button> - If no lyrics leave blank
+                <div class="lyrics-popup-container">
+                    <div class="lyrics-popup">
+                        <span>
+                            Load Lyrics For: #
+                            <input type="text" style="width: 70px;" />
+                            in book
+                            <select class="book-select">
+                                <option value="hymnal">Hymnal</option>
+                                <option value="tfws">TFWS</option>
+                            </select>
+                            <button onclick="loadLyrics(this)">Load Lyrics</button>
+                        </span><br>
+                        Seperate every slide by the text " [NEWSLIDE] " (case sensitive)<br>Do not enter any extra lines
+                        (one lyric per line)
+                        <textarea></textarea><br>
+                        <button onclick="this.parentElement.parentElement.style.display = 'none';">Close & Save
+                            Changes</button>
+                    </div>
+                </div>
+            </span>
+            <span class="lordsprayerCaptionOptions">
+                The Lords Prayer
+            </span>
+            <span class="communionCaptionOptions">
+                Holy Communion (INCLUDES LORD'S PRAYER)
+            </span>
+        </td>
+        <td>
+            <select class="caption-type-select">
+                <option value="centered">Large Text</option>
+                <option value="bodytext">Full Body Text</option>
+                <option value="bibleverse">Bible Verse</option>
+                <option value="hymn">Hymn</option>
+                <option value="music">Other Music</option>
+                <option value="titlecard">Title</option>
+                <option value="lordsprayer">Lord's Prayer</option>
+                <option value="communion">Holy Communion</option>
+            </select>
+        </td>
+        <td>
+            <button onclick="moveRow(this, 'up')" class="upButton">Up</button>
+            <button onclick="moveRow(this, 'down')" class="downButton">Down</button>
+        </td>
+        <td>
+            <button onclick="removeRow(this)">&#10006;</button>
+        </td>
+    </tr>
 </table>
 
 <script src="script.js"></script>
+<script src="libraries.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs/dist/pptxgen.bundle.js"></script>
 
 </html>
