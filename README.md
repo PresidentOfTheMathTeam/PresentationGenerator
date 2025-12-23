@@ -14,7 +14,7 @@ If this is the first time using the generator on your computer, make sure you al
 
 <img width="622" height="332" alt="image" src="https://github.com/user-attachments/assets/5bcd8299-75c6-4fde-af4c-ce87aa3e84c6" />
 
-3) To start, either load the Default Service, to get a starting place, or add your own caption.
+3) To start, either load the Default Service, to get a starting place, or add your own caption. For your first time, I suggest you start from a blank state to get a better hand on how to create and modify the captions (even though it will take conciterably longer)
 
 **Captions added from the button will always appear at the bottom of the service.**
 
