@@ -48,6 +48,10 @@ The full body text **ONLY** shows up in the Powerpoint file, and is completely s
 To edit the text click the edit text.
 
 
+<img width="1158" height="200" alt="image" src="https://github.com/user-attachments/assets/7f475c16-6e41-460b-bfd5-59a8c406a436" />
+
+
+
 
 
 # Additional Notes
