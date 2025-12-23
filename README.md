@@ -45,7 +45,8 @@ Preview in OBS:
 ### Full Body Text
 
 The full body text **ONLY** shows up in the Powerpoint file, and is completely skipped over by OBS. This is helpful when you would like to add a call & responce section, like the Call to Worship.
-To edit the text click the edit text.
+To edit the text click the edit text. [Click here to learn the syntax for creating slides and congregational repsonses](#lyricsbody-text-syntax-guide)
+
 
 
 <img width="1158" height="200" alt="image" src="https://github.com/user-attachments/assets/7f475c16-6e41-460b-bfd5-59a8c406a436" />
@@ -158,12 +159,19 @@ Finally, add a colon then the range of verses to import:
 
 <img width="546" height="422" alt="image" src="https://github.com/user-attachments/assets/03ae9e7f-e956-40fd-86f1-687fd06b195a" />
 
-**WARNING! BREAKING AWAY FROM THIS FORMAT WILL CAUSE THE IMPORT TO FAIL!**
+**WARNING! FAILURE TO FOLLOW THIS FORMAT WILL CAUSE THE IMPORT TO FAIL!**
 
 
 ## OBS One-Time Setup
 
 1) Download the [one time OBS install script](caption-importer.lua) and place it some where important, like your desktop.
-<img width="1426" height="869" alt="image" src="https://github.com/user-attachments/assets/744567e5-867f-4c08-a56a-c5152ffd7fc6" />
+<img height="400" alt="image" src="https://github.com/user-attachments/assets/744567e5-867f-4c08-a56a-c5152ffd7fc6" />
 
-2) In OBS
+2) In OBS, go to Tools -> Scripts
+<img width="285" height="250" alt="image" src="https://github.com/user-attachments/assets/d82fe187-6043-40db-80fb-80c32dbe562e" />
+
+3) Click the "+" button and import the script
+<img height="250" alt="image" src="https://github.com/user-attachments/assets/23da3522-38c0-48f0-80d4-6eb74a045d30" />
+
+4) Your OBS is now setup and should look something like this:
+<img height="400" alt="image" src="https://github.com/user-attachments/assets/fbf09765-c804-4e4e-864b-44e534d6444c" />
