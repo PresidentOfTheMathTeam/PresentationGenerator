@@ -2,8 +2,6 @@
 
 This guide will walk you through how to set up and use the caption generator for UMC services.
 
-Optionally, you can also watch the [video tutorial](https://youtu.be/jRf6hGLPXjo) to walk you through first time setup.
-
 If this is the first time using the generator on your computer, make sure you also follow the [OBS One-Time Setup Guide.](#obs-one-time-setup)
 
 ## Getting Started
