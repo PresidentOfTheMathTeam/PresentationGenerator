@@ -160,7 +160,7 @@ async function loadVerse(button) {
 
 // Bottom Interactions
 
-function createCaption(type, values) {
+function createCaption(type, values, bodyText) {
     let template = document.querySelector('.captionTemplate');
     if (!template) return;
 
@@ -189,6 +189,10 @@ function createCaption(type, values) {
                 }
             }
         }
+    }
+
+    if(bodyText) {
+        newCaption.querySelector(`.${type}CaptionOptions textarea`).value = bodyText;
     }
 
     applyListeners(newCaption);
@@ -232,9 +236,8 @@ function loadDefault() {
         { "type": "centered", "text": ["Offering Prayer"] },
         { "type": "bodytext", "text": ["Offering Prayer Text"] },
         { "type": "music", "text": ["Offertory"] },
-        { "type": "doxology" },
+        { "type": "hymn", "text": ["Doxology", "95 - UMH", "Praise God, From Whom All Blessings Flow"], "lyrics": doxologyLyrics },
         { "type": "communion" },
-        { "type": "lordsprayer" },
         { "type": "music", "text": ["Special Music"] },
         { "type": "centered", "text": ["Announcments"] },
         { "type": "hymn", "text": ["Closing Hymn"] },

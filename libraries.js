@@ -1302,3 +1302,14 @@ and the power,
 and the glory, forever.
 [NEWSLIDE]
 Amen!`;
+
+const doxologyLyrics = `Praise God,
+from whom all blessings flow;
+Praise Him,
+all creatures here below;
+[NEWSLIDE]
+Praise Him above,
+ye heavenly host;
+Praise Father,
+Son, and Holy Ghost.
+Amen.`;
