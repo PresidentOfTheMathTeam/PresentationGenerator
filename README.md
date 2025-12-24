@@ -14,7 +14,7 @@ If this is the first time using the generator on your computer, make sure you al
 
 <img width="622" height="332" alt="image" src="https://github.com/user-attachments/assets/5bcd8299-75c6-4fde-af4c-ce87aa3e84c6" />
 
-3) To start, either load the Default Service, to get a starting place, or add your own caption.
+3) To start, either load the Default Service, to get a starting place, or add your own caption. For your first time, I suggest you start from a blank state to get a better hand on how to create and modify the captions (even though it will take conciterably longer)
 
 **Captions added from the button will always appear at the bottom of the service.**
 
@@ -38,6 +38,10 @@ Each caption has buttons to change the caption type (ie. from a Hymn to the Lord
 The centered (large text) caption has two fields. The first field will show up both on OBS as well as in the Powerpoint for the in-person service. The second field, however, will only show up on the Powerpoint.
 This is useful incase you would like to add extra details (for example *Stand as you are able*) that would be more relevant to in-person guests compared to those online.
 
+Settings in the program:
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/798f72fb-3ded-4cfb-bcfe-59eaa5c43144" />
+
 Preview in OBS:
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/a3d8b6ce-e328-48f9-9e91-c2ff21859b8b" />
@@ -47,20 +51,20 @@ Preview in OBS:
 The full body text **ONLY** shows up in the Powerpoint file, and is completely ignored by OBS. This is helpful when you would like to add a call & responce section, like the Call to Worship.
 To edit the text click the edit text. [Click here to learn the syntax for creating slides and congregational repsonses](#lyricsbody-text-syntax-guide)
 
-This is used for the text of the Prayer of the Day, for example. However, due to the fact that does not generate any caption in OBS, it is reccomended that you use a centered caption right above it.
+This is used for the text of the Prayer of the Day, for example. However, due to the fact that does not generate any caption in OBS, it is reccomended that you use a large caption right above it. This not only provides a caption for OBS, but additionally creates a section header in Powerpoint before the content of the prayer/etc.
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/ca36b805-d4f7-439b-a37c-ee3d636a05a2" />
 
 
 This is how I would add the text of the Prayer of the Day to the service. The first, "Large Text" caption shows up as a header slide in both OBS & Powerpoint to introduce the section.
-The second part, or the Full Body Text, will include all of the prayer of the day text in the Powerpoint, and gets completely ignored by OBS, hence the need for the prior caption.
+The second part, or the Full Body Text, will include the actual prayer of the day text, just for Powerpoint, and gets completely ignored by the OBS export.
 
 ### Bible Verse
 
-The Bible Verse includes an input for a section title (ex. The Gospel, shown on the left on OBS) as well as an input for the verse, shown on the right in OBS.
+The Bible Verse includes an input for a section title (ex. The Gospel, shown on the left on OBS) as well as an input for the verse being read, which is the italicized text in OBS.
 
 If you click "edit verse," you will see options to input a bible verse into the PowerPoint version of the service. [More information on how to import bible verses automatically here!](#for-hymnsbible-verses)
-These lines of the verses will not show up in OBS, only on the PowerPoint slide. If you do not wish to show them for the verses you are doing, simply leave the field blank.
+These lines of the verses will not show up in OBS, only on the PowerPoint slide. Note you can always leave the field blank if you wish to only show the section header.
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/1caa9c88-fbf2-4c49-a4d0-b582c7f38d71" />
 
