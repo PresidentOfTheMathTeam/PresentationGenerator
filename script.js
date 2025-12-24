@@ -343,7 +343,9 @@ function createSlideArray(extraSlidesString) {
 
             if (slideTextArray[slideTextArray.length - 1].text == "") slideTextArray.pop();
 
-            if (slideTextArray[0].text == "") slideTextArray.splice(0, 1); // Removes empty first line causing "repair" errors
+            if (slideTextArray[0]) {
+                if (slideTextArray[0].text == "") slideTextArray.splice(0, 1);
+            } // Removes empty first line causing "repair" errors
 
             slideArray.push(slideTextArray);
 
@@ -372,7 +374,11 @@ function createSlideArray(extraSlidesString) {
         slideTextArray[slideTextArray.length - 1].text = slideTextArray[slideTextArray.length - 1].text.trim(); // Removes random \n when using ** formatting
         if (slideTextArray[slideTextArray.length - 1].text == "") slideTextArray.pop();
 
-        if (slideTextArray[0].text == "") slideTextArray.splice(0, 1); // Removes empty first line causing "repair" errors
+        
+        if (slideTextArray[0]) {
+            if (slideTextArray[0].text == "") slideTextArray.splice(0, 1);
+        }
+        // Removes empty first line causing "repair" errors
 
 
         slideArray.push(slideTextArray);
