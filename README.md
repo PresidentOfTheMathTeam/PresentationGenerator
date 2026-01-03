@@ -14,7 +14,9 @@ If this is the first time using the generator on your computer, make sure you al
 
 <img width="622" height="332" alt="image" src="https://github.com/user-attachments/assets/5bcd8299-75c6-4fde-af4c-ce87aa3e84c6" />
 
-3) To start, either load the Default Service, to get a starting place, or add your own caption. For your first time, I suggest you start from a blank state to get a better hand on how to create and modify the captions (even though it will take conciterably longer)
+3) To start, either load the Default Service, to get a starting place, or add your own caption.
+For your first time, I suggest you load the default service, maybe fill in a bit of the caption text, and try exporting to PowerPoint and OBS to see what the program can do. (Skim through the rest of this til you find the [export options](#how-to-export) if you choose to do so)
+After that, I emplore you to reload the page and learn how each individual caption type works with a blank presentation.
 
 **Captions added from the button will always appear at the bottom of the service.**
 
@@ -48,7 +50,7 @@ Preview in OBS:
 
 ### Full Body Text
 
-The full body text **ONLY** shows up in the Powerpoint file, and is completely ignored by OBS. This is helpful when you would like to add a call & responce section, like the Call to Worship.
+The full body text **ONLY** shows up in the Powerpoint file, and is completely ignored by OBS. This is helpful when you would like to add a call & response section, like the Call to Worship.
 To edit the text click the edit text. [Click here to learn the syntax for creating slides and congregational repsonses](#lyricsbody-text-syntax-guide)
 
 This is used for the text of the Prayer of the Day, for example. However, due to the fact that does not generate any caption in OBS, it is reccomended that you use a large caption right above it. This not only provides a caption for OBS, but additionally creates a section header in Powerpoint before the content of the prayer/etc.
