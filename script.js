@@ -191,7 +191,7 @@ function createCaption(type, values, bodyText) {
         }
     }
 
-    if(bodyText) {
+    if (bodyText) {
         newCaption.querySelector(`.${type}CaptionOptions textarea`).value = bodyText;
     }
 
@@ -208,44 +208,18 @@ function deleteAll(overrideConfirmation) {
     refreshMoveButtons();
 }
 
-function loadDefault() {
+function loadCaptions(captionsToLoad, clearCurrent, overrideConfirmation) {
     const captionContainer = document.querySelector("#captionContainer");
 
-    if (captionContainer.children.length != 0) {
-        if (prompt('Are you sure you want to load the default preset? This will clear all current captions and cannot be undone!\n\nType "DEFAULT" to confirm.').toLowerCase() != "default") return;
+    if (captionContainer.children.length != 0 && !overrideConfirmation) {
+        if (prompt('Are you sure you want to load the preset? This will clear all current captions and cannot be undone!\n\nType "DEFAULT" to confirm.').toLowerCase() != "default") return;
     }
 
-    const defaultCaptions = [
-        { "type": "titlecard" },
-        { "type": "music", "text": ["Prelude"] },
-        { "type": "centered", "text": ["Welcome!", "For those online, feel free to drop a hello in the chat so we may greet you!"] },
-        { "type": "centered", "text": ["Call to Worship"] },
-        { "type": "bodytext", "text": ["C2W Text"] },
-        { "type": "hymn", "text": ["Hymn of Praise"] },
-        { "type": "centered", "text": ["Prayer of the Day"] },
-        { "type": "bodytext", "text": ["POTD Text"] },
-        { "type": "bibleverse", "text": ["The Lesson"] },
-        { "type": "bibleverse", "text": ["The Gospel"] },
-        { "type": "centered", "text": ["Children's Word"] },
-        { "type": "centered", "text": ["The Message", "Reverend Jim Fu"] },
-        { "type": "hymn", "text": ["Hymn of Prayer"] },
-        { "type": "centered", "text": ["Prayers of the People"] },
-        { "type": "centered", "text": ["Prayer of Confession"] },
-        { "type": "centered", "text": ["Assurance of Forgiveness"] },
-        { "type": "centered", "text": ["Sharing the Peace of Christ", "Spread Christ's peace online by saying hello in the chat!"] },
-        { "type": "centered", "text": ["Offering Prayer"] },
-        { "type": "bodytext", "text": ["Offering Prayer Text"] },
-        { "type": "music", "text": ["Offertory"] },
-        { "type": "hymn", "text": ["Doxology", "95 - UMH", "Praise God, From Whom All Blessings Flow"], "bodyText": doxologyLyrics },
-        { "type": "communion" },
-        { "type": "music", "text": ["Special Music"] },
-        { "type": "centered", "text": ["Announcments"] },
-        { "type": "hymn", "text": ["Closing Hymn"] },
-        { "type": "centered", "text": ["Benediction"] },
-        { "type": "music", "text": ["Postlude"] }
-    ];
+    if (clearCurrent) {
+        deleteAll(true);
+    }
 
-    defaultCaptions.forEach(caption => {
+    captionsToLoad.forEach(caption => {
         createCaption(caption.type, caption.text, caption.bodyText);
     })
 }
@@ -277,15 +251,23 @@ function generateExportJSON() {
         }
 
         if (captionType == "music" || captionType == "bodytext" || captionType == "bibleverse" || captionType == "hymn") {
-            captionJSON.extraSlides = caption.querySelector(`.${captionType}CaptionOptions textarea`).value;
+            captionJSON.bodyText = caption.querySelector(`.${captionType}CaptionOptions textarea`).value;
         }
 
         if (captionType == "titlecard") {
-            let inputDate = new Date(caption.querySelector("input[type='date']").value);
-            let monthString = inputDate.toLocaleString('default', { month: 'long' });
-            let day = inputDate.getDate();
-            let year = inputDate.getFullYear();
-            captionJSON.dateString = `${monthString} ${day}, ${year}`;
+
+            let dateValue = caption.querySelector("input[type='date']").value;
+            let stringOutput = "";
+
+            if (dateValue != "") {
+                let inputDate = new Date(dateValue);
+                let monthString = inputDate.toLocaleString('default', { month: 'long' });
+                let day = inputDate.getDate();
+                let year = inputDate.getFullYear();
+                stringOutput = `${monthString} ${day}, ${year}`;
+            }
+
+            captionJSON.dateString = stringOutput;
         }
 
         exportJSON.captions.push(captionJSON);
@@ -295,9 +277,9 @@ function generateExportJSON() {
 }
 
 // splits the body slides string into individual slides
-function createSlideArray(extraSlidesString) {
+function createSlideArray(bodyTextString) {
 
-    let lines = extraSlidesString.trim().split("\n");
+    let lines = bodyTextString.trim().split("\n");
 
     let slideArray = [];
 
@@ -374,7 +356,7 @@ function createSlideArray(extraSlidesString) {
         slideTextArray[slideTextArray.length - 1].text = slideTextArray[slideTextArray.length - 1].text.trim(); // Removes random \n when using ** formatting
         if (slideTextArray[slideTextArray.length - 1].text == "") slideTextArray.pop();
 
-        
+
         if (slideTextArray[0]) {
             if (slideTextArray[0].text == "") slideTextArray.splice(0, 1);
         }
@@ -393,7 +375,7 @@ function obsExport() {
     let captions = generateExportJSON().captions;
     let exportJSON = { captions: [] };
 
-    for(let caption of captions) {
+    for (let caption of captions) {
         switch (caption.type) {
             case "centered":
                 exportJSON.captions.push({ type: "centered", text: [caption.text[0]] });
@@ -505,7 +487,7 @@ function powerpointExport() {
                 break;
 
             case "bodytext":
-                slidesToCreate = createSlideArray(caption.extraSlides);
+                slidesToCreate = createSlideArray(caption.bodyText);
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -518,7 +500,7 @@ function powerpointExport() {
                 textString = caption.text[0] + "\n\n" + caption.text[1];
                 newSlide.addText(textString, { placeholder: "header" });
 
-                slidesToCreate = createSlideArray(caption.extraSlides);
+                slidesToCreate = createSlideArray(caption.bodyText);
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -532,7 +514,7 @@ function powerpointExport() {
                 textString = `${caption.text[0]}\n\n${caption.text[2]}\n#${caption.text[1]}`;
                 newSlide.addText(textString, { placeholder: "header" });
 
-                slidesToCreate = createSlideArray(caption.extraSlides);
+                slidesToCreate = createSlideArray(caption.bodyText);
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -546,7 +528,7 @@ function powerpointExport() {
                 newSlide.addText(caption.text[0] + "\n" + caption.text[1], { placeholder: "header" });
                 newSlide.addText(caption.text[2], { placeholder: "body" });
 
-                slidesToCreate = createSlideArray(caption.extraSlides);
+                slidesToCreate = createSlideArray(caption.bodyText);
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -575,16 +557,47 @@ function powerpointExport() {
             case "communion":
                 newSlide = pptx.addSlide({ masterName: "OneTextbox" });
                 newSlide.addText("Holy Communion", { placeholder: "header" });
-                
+
                 slidesToCreate = createSlideArray(communionText);
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
                 }
-                
+
                 break;
         }
     }
 
     pptx.writeFile({ fileName: 'powerpoint-export.pptx' });
+}
+
+
+async function importSave() {
+    const input = document.getElementById("saveUpload");
+    const file = input.files?.[0];
+    if (!file) return;
+
+    const text = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject("Error reading file");
+        reader.readAsText(file);
+    });
+
+    document.getElementById("captionContainer").innerHTML = text;
+    refreshMoveButtons();
+    return text; // still returns the text in case you need it
+}
+
+function exportSave() {
+    let fileText = document.getElementById("captionContainer").innerHTML;
+    const blob = new Blob([fileText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "RENAME-ME-saved-service.txt"; // text file
+    a.click();
+
+    URL.revokeObjectURL(url);
 }

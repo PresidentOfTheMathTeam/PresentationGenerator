@@ -40,14 +40,24 @@
     </span>
     <span>
         <button id="clearAllBtn" onclick="deleteAll()">Clear All</button>
-        <button id="loadDefaultBtn" onclick="loadDefault()">Load Default Service</button>
+        <button id="loadDefaultBtn" onclick="loadCaptions(defaultCaptions, true, false)">Load Default Service</button>
     </span>
     <span>
         Export captions to...
         <button id="obsBtn" onclick="obsExport()">OBS</button>
-        <button id="obsBtn" onclick="powerpointExport()">PowerPoint</button>
+        <button id="powerpointBtn" onclick="powerpointExport()">PowerPoint</button>
     </span>
-    <a href="https://github.com/PresidentOfTheMathTeam/PresentationGenerator/blob/main/README.md" target="_blank">Help/Tutorial Doc</a>
+    <span>
+        Save service to edit at a later date:
+        <button id="exportSaveBtn" onclick="exportSave()">Download File</button>
+        <input type="file" id="saveUpload">
+        <button id="importSaveBtn" onclick="importSave()">Import Selected File</button>
+    </span>
+    <a href="https://github.com/PresidentOfTheMathTeam/PresentationGenerator/blob/main/README.md"
+        target="_blank">Help/Tutorial Doc</a>
+
+
+
 </body>
 
 <table>

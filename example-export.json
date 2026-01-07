@@ -1,0 +1,223 @@
+{
+    "captions": [
+        {
+            "type": "titlecard",
+            "text": [
+                "",
+                ""
+            ],
+            "dateString": "Invalid Date NaN, NaN"
+        },
+        {
+            "type": "music",
+            "text": [
+                "Prelude",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Welcome!",
+                "For those online, feel free to drop a hello in the chat so we may greet you!"
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Call to Worship",
+                ""
+            ]
+        },
+        {
+            "type": "bodytext",
+            "text": [
+                "C2W Text"
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "hymn",
+            "text": [
+                "Hymn of Praise",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Prayer of the Day",
+                ""
+            ]
+        },
+        {
+            "type": "bodytext",
+            "text": [
+                "POTD Text"
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "bibleverse",
+            "text": [
+                "The Lesson",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "bibleverse",
+            "text": [
+                "The Gospel",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Children's Word",
+                ""
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "The Message",
+                "Reverend Jim Fu"
+            ]
+        },
+        {
+            "type": "hymn",
+            "text": [
+                "Hymn of Prayer",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Prayers of the People",
+                ""
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Prayer of Confession",
+                ""
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Assurance of Forgiveness",
+                ""
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Sharing the Peace of Christ",
+                "Spread Christ's peace online by saying hello in the chat!"
+            ]
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Offering Prayer",
+                ""
+            ]
+        },
+        {
+            "type": "bodytext",
+            "text": [
+                "Offering Prayer Text"
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "music",
+            "text": [
+                "Offertory",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "hymn",
+            "text": [
+                "Doxology",
+                "95 - UMH",
+                "Praise God, From Whom All Blessings Flow",
+                ""
+            ],
+            "extraSlides": "Praise God,\nfrom whom all blessings flow;\nPraise Him,\nall creatures here below;\n[NEWSLIDE]\nPraise Him above,\nye heavenly host;\nPraise Father,\nSon, and Holy Ghost.\nAmen."
+        },
+        {
+            "type": "communion",
+            "text": []
+        },
+        {
+            "type": "music",
+            "text": [
+                "Special Music",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Announcments",
+                ""
+            ]
+        },
+        {
+            "type": "hymn",
+            "text": [
+                "Closing Hymn",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        },
+        {
+            "type": "centered",
+            "text": [
+                "Benediction",
+                ""
+            ]
+        },
+        {
+            "type": "music",
+            "text": [
+                "Postlude",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "extraSlides": ""
+        }
+    ]
+}
