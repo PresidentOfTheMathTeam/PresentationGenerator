@@ -418,10 +418,10 @@ function powerpointExport() {
     // One Textbox Slide Master - ID: OneTextbox
     pptx.defineSlideMaster({
         title: "OneTextbox",
-        background: { color: "FFFFFF" },
+        background: { color: "000000" },
         objects: [{
             placeholder: {
-                options: { name: "header", type: "header", x: 1, y: 1, w: 11.33, h: 5.5, align: "center", valign: "middle", color: '000000', fontFace: "Aptos Black", fontSize: 66 },
+                options: { name: "header", type: "header", x: 1, y: 1, w: 11.33, h: 5.5, align: "center", valign: "middle", color: 'FFFFFF', fontFace: "Aptos Black", fontSize: 66 },
                 text: "Title Placeholder",
             },
         },
@@ -432,10 +432,10 @@ function powerpointExport() {
 
     pptx.defineSlideMaster({
         title: "FullBody",
-        background: { color: "FFFFFF" },
+        background: { color: "000000" },
         objects: [{
             placeholder: {
-                options: { name: "body", type: "body", x: 1, y: 1, w: 11.33, h: 5.5, align: "left", valign: "middle", color: '000000', fontSize: 59, fontFace: "Arial Narrow", bold: true },
+                options: { name: "body", type: "body", x: 1, y: 1, w: 11.33, h: 5.5, align: "left", valign: "middle", color: 'FFFFFF', fontSize: 59, fontFace: "Arial Narrow", bold: true },
                 text: "Body Placeholder",
             },
         },
@@ -445,17 +445,17 @@ function powerpointExport() {
     // Title Card Slide Master - ID: TitleSlide
     pptx.defineSlideMaster({
         title: "TitleSlide",
-        background: { color: "FFFFFF" },
+        background: { color: "000000" },
         objects: [
             {
                 placeholder: {
-                    options: { name: "header", type: "header", x: 0.76, y: 1.19, w: 11.81, h: 2.28, align: "center", valign: "middle", color: '000000', fontFace: "Aptos Black", fontSize: 66 },
+                    options: { name: "header", type: "header", x: 0.76, y: 1.19, w: 11.81, h: 2.28, align: "center", valign: "middle", color: 'FFFFFF', fontFace: "Aptos Black", fontSize: 66 },
                     text: "United Methodist Church of Elmhurst",
                 },
             },
             {
                 placeholder: {
-                    options: { name: "body", type: "body", x: 0.76, y: 4.63, w: 11.81, h: 2.28, align: "center", valign: "bottom", color: '000000', fontSize: 54, fontFace: "Arial Narrow", bold: true },
+                    options: { name: "body", type: "body", x: 0.76, y: 4.63, w: 11.81, h: 2.28, align: "center", valign: "bottom", color: 'FFFFFF', fontSize: 54, fontFace: "Arial Narrow", bold: true },
                     text: "Welcome!",
                 },
             },
@@ -488,6 +488,7 @@ function powerpointExport() {
 
             case "bodytext":
                 slidesToCreate = createSlideArray(caption.bodyText);
+                if (slidesToCreate[0].length == 0) break;
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -501,6 +502,7 @@ function powerpointExport() {
                 newSlide.addText(textString, { placeholder: "header" });
 
                 slidesToCreate = createSlideArray(caption.bodyText);
+                if (slidesToCreate[0].length == 0) break;
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -515,6 +517,7 @@ function powerpointExport() {
                 newSlide.addText(textString, { placeholder: "header" });
 
                 slidesToCreate = createSlideArray(caption.bodyText);
+                if (slidesToCreate[0].length == 0) break;
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
@@ -529,6 +532,7 @@ function powerpointExport() {
                 newSlide.addText(caption.text[2], { placeholder: "body" });
 
                 slidesToCreate = createSlideArray(caption.bodyText);
+                if (slidesToCreate[0].length == 0) break;
                 for (let slideText of slidesToCreate) {
                     let newBodySlide = pptx.addSlide({ masterName: "FullBody" });
                     newBodySlide.addText(slideText, { placeholder: "body" });
