@@ -262,7 +262,7 @@ function generateExportJSON() {
             if (dateValue != "") {
                 let inputDate = new Date(dateValue);
                 let monthString = inputDate.toLocaleString('default', { month: 'long' });
-                let day = inputDate.getDate();
+                let day = Math.floor(inputDate.getDate()) + 1;
                 let year = inputDate.getFullYear();
                 stringOutput = `${monthString} ${day}, ${year}`;
             }
