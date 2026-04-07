@@ -595,6 +595,7 @@ async function importSave() {
 
 function exportSave() {
     let fileText = document.getElementById("captionContainer").innerHTML;
+
     const blob = new Blob([fileText], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
 
@@ -605,3 +606,19 @@ function exportSave() {
 
     URL.revokeObjectURL(url);
 }
+
+
+/*
+
+const captionContainer = document.querySelector("#captionContainer");
+
+    if (!captionContainer) return null;
+    if (captionContainer.children.length == 0) {
+        alert("Cannot download 0 captions! Insert some more captions or load the default ones in order to export them.");
+        return null;
+    }
+
+    let exportJSON = { "captions": [] };
+
+
+*/
